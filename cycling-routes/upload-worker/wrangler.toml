@@ -1,0 +1,14 @@
+# Only needed if you deploy from the command line with `npx wrangler deploy`.
+# Deploying by pasting worker.js into the Cloudflare dashboard works without this file.
+name = "club-routes-upload"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+[vars]
+GITHUB_REPO = "your-user/club-routes"
+GITHUB_BRANCH = "main"
+ALLOWED_ORIGIN = "https://your-user.github.io"
+
+# Secrets are set separately and never stored in this file:
+#   npx wrangler secret put GITHUB_TOKEN
+#   npx wrangler secret put UPLOAD_CODE

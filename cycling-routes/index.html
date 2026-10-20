@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Club Routes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside id="panel">
+    <header>
+      <h1>Club Routes</h1>
+      <p id="summary">Loading…</p>
+    </header>
+
+    <label id="drop" for="file-input">
+      <input id="file-input" type="file" accept=".gpx" multiple hidden>
+      <strong>Add GPX files</strong>
+      <span id="drop-hint">Drop files here or click to choose</span>
+    </label>
+    <p id="status" hidden></p>
+
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search routes">
+      <div class="row">
+        <select id="sort">
+          <option value="name">Name</option>
+          <option value="km">Distance</option>
+          <option value="gain">Climbing</option>
+        </select>
+        <select id="colour-mode" title="Line colours">
+          <option value="overlap">Overlap view</option>
+          <option value="distinct">Distinct colours</option>
+        </select>
+      </div>
+      <div class="row">
+        <button id="all-on">Show all</button>
+        <button id="all-off">Hide all</button>
+        <button id="fit">Fit visible</button>
+      </div>
+    </div>
+
+    <ul id="list"></ul>
+
+    <footer>
+      <button id="clear-local" hidden>Remove uploaded routes</button>
+      <button id="forget-code" hidden>Forget club code</button>
+    </footer>
+  </aside>
+
+  <main id="map"></main>
+
+  <dialog id="code-dialog">
+    <form method="dialog" id="code-form">
+      <h2>Add to the club map</h2>
+      <p class="muted">Routes you upload are shown to everyone. Enter the club code to continue.</p>
+      <label>Club code
+        <input id="code-input" type="password" autocomplete="current-password" required>
+      </label>
+      <label>Your name <span class="muted">(optional, saved with the upload)</span>
+        <input id="name-input" type="text" maxlength="60" autocomplete="name">
+      </label>
+      <p id="code-error" class="error" hidden></p>
+      <div class="row">
+        <button value="cancel" formnovalidate>Cancel</button>
+        <button value="ok" class="primary">Upload</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
